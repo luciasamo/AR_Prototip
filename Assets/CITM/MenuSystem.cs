@@ -5,10 +5,9 @@ public class MenuSystem : MonoBehaviour
 {
    
 
-    public void Start()
+    public void StartGame()
     {
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("ARDemoScene");
     }
 
     public void Salir()

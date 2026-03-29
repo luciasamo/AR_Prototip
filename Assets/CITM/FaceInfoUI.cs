@@ -1,25 +1,14 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using System.Collections.Generic;
 
 public class FaceInfoUI : MonoBehaviour
 {
     public GameObject infoPanel;
     public ARFaceManager faceManager;
 
-    void OnEnable()
+    void Update()
     {
-        faceManager.facesChanged += OnFacesChanged;
-    }
-
-    void OnDisable()
-    {
-        faceManager.facesChanged -= OnFacesChanged;
-    }
-
-    void OnFacesChanged(ARFacesChangedEventArgs args)
-    {
-        if (args.added.Count > 0)
+        if (faceManager.trackables.count > 0)
         {
             infoPanel.SetActive(true);
         }
