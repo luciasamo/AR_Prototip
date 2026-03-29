@@ -1,27 +1,20 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using System.Collections.Generic;
 
 public class FaceInfoUI : MonoBehaviour
 {
     public GameObject infoPanel;
-    private ARFaceManager faceManager;
-
-    void Start()
-    {
-        faceManager = FindObjectOfType<ARFaceManager>();
-        infoPanel.SetActive(false);
-    }
+    public ARFaceManager faceManager;
 
     void OnEnable()
     {
-        if (faceManager != null)
-            faceManager.facesChanged += OnFacesChanged;
+        faceManager.facesChanged += OnFacesChanged;
     }
 
     void OnDisable()
     {
-        if (faceManager != null)
-            faceManager.facesChanged -= OnFacesChanged;
+        faceManager.facesChanged -= OnFacesChanged;
     }
 
     void OnFacesChanged(ARFacesChangedEventArgs args)
@@ -30,8 +23,7 @@ public class FaceInfoUI : MonoBehaviour
         {
             infoPanel.SetActive(true);
         }
-
-        if (args.removed.Count > 0)
+        else
         {
             infoPanel.SetActive(false);
         }
