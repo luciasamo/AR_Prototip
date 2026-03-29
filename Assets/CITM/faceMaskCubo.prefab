@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4011837938712969757}
   m_Layer: 0
-  m_Name: faceMaskPrueba
+  m_Name: faceMaskCubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
