@@ -6,15 +6,23 @@ public class FaceInfoUI : MonoBehaviour
     public GameObject infoPanel;
     public ARFaceManager faceManager;
 
+    // Referencia al QuestionManager para saber si las preguntas están activas
+    public QuestionManager questionManager;
+
     void Update()
     {
-        if (faceManager.trackables.count > 0)
+        // Solo mostrar infoPanel si NO hay preguntas activas
+        bool questionsActive = questionManager != null && questionManager.questionPanel != null && questionManager.questionPanel.activeSelf;
+
+        if (faceManager.trackables.count > 0 && !questionsActive)
         {
-            infoPanel.SetActive(true);
+            if (infoPanel != null && !infoPanel.activeSelf)
+                infoPanel.SetActive(true);
         }
         else
         {
-            infoPanel.SetActive(false);
+            if (infoPanel != null && infoPanel.activeSelf && !questionsActive)
+                infoPanel.SetActive(false);
         }
     }
 }
