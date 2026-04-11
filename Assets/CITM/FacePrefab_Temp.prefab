@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3941836719464314769}
+  - component: {fileID: 3863310300636407579}
   m_Layer: 0
   m_Name: MaskContainer
   m_TagString: Untagged
@@ -38,6 +39,108 @@ Transform:
   - {fileID: 682076751699759273}
   m_Father: {fileID: 6831216807105326159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3863310300636407579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632231682213583371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d37ac498cd989a40b7b1e9ca8740ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MaskSwitcher
+  masks:
+  - maskObject: {fileID: 2705247433488422523}
+    maskName: Peste Negra
+    questionText: "\xBFEsta m\xE1scara de pico largo se usaba en los carnavales de
+      Venecia para asustar a los turistas?"
+    correctAnswerIsYes: 1
+    correctFeedback: "\xA1Exacto! Es falso. Esta m\xE1scara la usaban los m\xE9dicos
+      durante la peste, no tiene nada que ver con carnavales."
+    wrongFeedback: "\xA1Cuidado! No es un disfraz de carnaval. Era un equipo de protecci\xF3n
+      m\xE9dica contra la peste bub\xF3nica."
+    culturalInfo: "Dise\xF1ada en 1619 por Charles de L'Orme, el pico se llenaba
+      de hierbas arom\xE1ticas (menta, alcanfor, clavo) para filtrar el \"mal aire\".
+      Los m\xE9dicos tambi\xE9n usaban un bast\xF3n para examinar a los enfermos
+      sin tocarlos."
+  - maskObject: {fileID: 3408832697147957407}
+    maskName: Veneciana
+    questionText: "\xBFEsta m\xE1scara decorada es conocida como \"Bauta\" y permit\xEDa
+      ocultar la identidad durante el Carnaval de Venecia?"
+    correctAnswerIsYes: 1
+    correctFeedback: "\xA1Correcto! La Bauta cubr\xEDa toda la cara y se sujetaba
+      con un cord\xF3n, permitiendo comer y beber sin quitarla."
+    wrongFeedback: "En realidad s\xED, es un tipo de m\xE1scara veneciana llamada
+      Bauta, muy popular en el siglo XVIII."
+    culturalInfo: "La Bauta era usada tanto por hombres como por mujeres. Su forma
+      cuadrada en la barbilla permit\xEDa hablar con voz distorsionada. El anonimato
+      igualaba a nobles y plebeyos durante el carnaval."
+  - maskObject: {fileID: 7043773081219512701}
+    maskName: 'Kitsune '
+    questionText: "\xBFEsta m\xE1scara de zorro representa a un demonio malvado que
+      come ni\xF1os?"
+    correctAnswerIsYes: 0
+    correctFeedback: "\xA1No! Los kitsune no son demonios malvados. Son esp\xEDritus
+      guardianes, a veces traviesos, pero tambi\xE9n mensajeros divinos."
+    wrongFeedback: "Falso. Los kitsune (zorros) son criaturas sagradas del sinto\xEDsmo,
+      asociadas al dios Inari, no demonios infant\xEDvoros."
+    culturalInfo: "En Jap\xF3n, los kitsune tienen poderes m\xE1gicos como cambiar
+      de forma o crear fuego. Cuantas m\xE1s colas (hasta 9), m\xE1s sabios y poderosos.
+      Se les ofrecen ofrendas de tofu frito (aburaage) en los santuarios Inari."
+  - maskObject: {fileID: 8360695971772452875}
+    maskName: Oni
+    questionText: "\xBFEsta m\xE1scara con cuernos y colmillos representa a un ogro
+      o demonio japon\xE9s que castiga a los malvados en el infierno?"
+    correctAnswerIsYes: 1
+    correctFeedback: "\xA1Correcto! Los oni son criaturas temibles pero tambi\xE9n
+      justicieras. En el infierno (Jigoku) torturan a los pecadores."
+    wrongFeedback: "S\xED, los oni son ogros demon\xEDacos que castigan a los malvados.
+      Aparecen en el festival Setsubun."
+    culturalInfo: "Los oni pueden ser rojos, azules o verdes. En el Setsubun (3 de
+      febrero), la gente lanza habas gritando \"\xA1Oni wa soto! Fuku wa uchi!\"
+      (Fuera oni, dentro la fortuna). Algunos templos tienen estatuas de oni como
+      protectores."
+  - maskObject: {fileID: 791039817247544970}
+    maskName: Masquerade
+    questionText: "\xBFEsta m\xE1scara de media cara se usaba originalmente en el
+      antiguo Egipto para momificar faraones?"
+    correctAnswerIsYes: 0
+    correctFeedback: "\xA1No! Las m\xE1scaras de baile (masquerade) son europeas
+      de los siglos XV-XVIII, no egipcias."
+    wrongFeedback: "Falso. Las m\xE1scaras de momias egipcias son de oro y cubren
+      toda la cara, no tienen nada que ver con las masquerades venecianas o francesas."
+    culturalInfo: "Las masquerades se popularizaron en la corte de Luis XIV. Eran
+      elegantes, con plumas de avestruz y encajes. Se usaban en bailes donde los
+      invitados pod\xEDan flirtar sin ser reconocidos. Hoy se usan en la \xD3pera
+      de Viena o en fiestas de disfraces."
+  - maskObject: {fileID: 7850059354648877061}
+    maskName: Tiki Mask
+    questionText: "\xBFEsta m\xE1scara tiki es originaria de la Polinesia y representa
+      a un dios o antepasado protector?"
+    correctAnswerIsYes: 1
+    correctFeedback: "\xA1Correcto! Las m\xE1scaras tiki son sagradas, representan
+      deidades (Ku, Lono, Kane) o primeros ancestros."
+    wrongFeedback: "S\xED, los tiki son tallas polin\xE9sicas, no africanas ni americanas.
+      Simbolizan protecci\xF3n y fertilidad."
+    culturalInfo: "En la cultura maor\xED, el tiki representa al primer hombre creado
+      por los dioses. En Haw\xE1i, las estatuas tiki se colocaban en templos heiau.
+      Los collares hei-tiki se usan como amuletos contra el mal de ojo."
+  - maskObject: {fileID: 161260549415209491}
+    maskName: Nepalese Tribal
+    questionText: "\xBFEsta m\xE1scara tribal de Nepal se usaba exclusivamente para
+      espantar mosquitos durante la temporada de lluvias?"
+    correctAnswerIsYes: 0
+    correctFeedback: "\xA1Qu\xE9 invento! No, las m\xE1scaras nepal\xEDes son rituales,
+      no ahuyentan mosquitos. Se usan en danzas sagradas para honrar dioses hind\xFAes
+      y budistas."
+    wrongFeedback: "Falso. Las m\xE1scaras de Nepal representan a Bhairava (forma
+      furiosa de Shiva), diosas madre o demonios. Nada que ver con insectos."
+    culturalInfo: "Talladas en madera de laurel o higuera, se usan en festivales
+      como Indra Jatra. Los danzantes entran en trance y bendicen al p\xFAblico.
+      Los ojos saltones y la lengua roja simbolizan poder divino para destruir el
+      mal."
 --- !u!1 &9181299097016701500
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,7 +150,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6831216807105326159}
-  - component: {fileID: -5885687517623400949}
   m_Layer: 0
   m_Name: FacePrefab_Temp
   m_TagString: Untagged
@@ -71,26 +173,6 @@ Transform:
   - {fileID: 3941836719464314769}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5885687517623400949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9181299097016701500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d37ac498cd989a40b7b1e9ca8740ae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MaskSwitcher
-  masks:
-  - {fileID: 2705247433488422523}
-  - {fileID: 3408832697147957407}
-  - {fileID: 7043773081219512701}
-  - {fileID: 8360695971772452875}
-  - {fileID: 791039817247544970}
-  - {fileID: 7850059354648877061}
-  - {fileID: 161260549415209491}
 --- !u!1001 &449022218571607003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,15 +195,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6d7ec0b1b1e9fcc42a10aa66cb7f456b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.002
+      value: 0.0023
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6d7ec0b1b1e9fcc42a10aa66cb7f456b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0273
+      value: 0.0289
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6d7ec0b1b1e9fcc42a10aa66cb7f456b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0219
+      value: -0.013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6d7ec0b1b1e9fcc42a10aa66cb7f456b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -200,11 +282,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 698b6d4dd73d6844284be8be77ba5583, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1106
+      value: -0.1063
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 698b6d4dd73d6844284be8be77ba5583, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0323
+      value: -0.028
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 698b6d4dd73d6844284be8be77ba5583, type: 3}
       propertyPath: m_LocalRotation.w
@@ -240,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 698b6d4dd73d6844284be8be77ba5583, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -267,27 +349,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 8
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.23
+      value: -0.277
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.023
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -317,13 +399,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
       propertyPath: m_Name
       value: veneciana
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f97f4c73bfa27484687e18c0e83bafa3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -406,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8631e21b959f9bc43aaf7bbc3f9c5cb4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -489,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 657294b4860b57a4b8296d2dff91565d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -516,27 +602,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.08800867
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08800867
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.08800867
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.023604
+      value: -0.0264
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0060534
+      value: 0.0084
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0483
+      value: -0.0361
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -565,6 +651,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6023047990144996384, guid: b402abb7cec955849b2162cf06f76db2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -620,11 +710,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eedec0186b968b34591014e555f9972e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1745
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eedec0186b968b34591014e555f9972e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5844
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eedec0186b968b34591014e555f9972e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -660,6 +750,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eedec0186b968b34591014e555f9972e, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eedec0186b968b34591014e555f9972e, type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

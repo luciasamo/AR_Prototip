@@ -1,65 +1,86 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class QuestionManager : MonoBehaviour
 {
+    public static QuestionManager instance;
+
     [Header("Paneles UI")]
-    public GameObject infoPanel;        // El panel de información actual que se muestra con la máscara
-    public GameObject questionPanel;    // El nuevo panel que contendrá la pregunta
+    public GameObject questionPanel;
+    public GameObject infoPanel;
+    public TextMeshProUGUI questionText;
+    public TextMeshProUGUI infoText;
 
-    [Header("Texto de Pregunta")]
-    public TMPro.TextMeshProUGUI questionText; // Para mostrar la pregunta (usa TextMeshPro)
-    // Alternativa: Si usas UI Text normal, cambia a: public UnityEngine.UI.Text questionText;
+    [Header("Botones táctiles")]
+    public Button yesButton;
+    public Button noButton;
 
-    private string currentQuestion = "¿Esta máscara es de la cultura Veneciana?";
+    private MaskSwitcher.MaskData currentMaskData;
+    private bool waitingForAnswer = true;
+    private bool showingInfo = false;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     void Start()
     {
-        // Aseguramos que al inicio la pregunta esté oculta
-        if (questionPanel != null)
-            questionPanel.SetActive(false);
+        if (yesButton) yesButton.onClick.AddListener(OnAnswerYes);
+        if (noButton) noButton.onClick.AddListener(OnAnswerNo);
+
+        if (questionPanel) questionPanel.SetActive(false);
+        if (infoPanel) infoPanel.SetActive(false);
     }
 
-    // Método que llamará el botón "Preguntas"
-    public void OnShowQuestionButtonPressed()
+    public void SetCurrentMask(MaskSwitcher.MaskData maskData)
     {
-        // 1. Ocultar el panel de información
-        if (infoPanel != null)
-            infoPanel.SetActive(false);
+        currentMaskData = maskData;
+        waitingForAnswer = true;
+        showingInfo = false;
 
-        // 2. Mostrar el panel de preguntas
-        if (questionPanel != null)
-            questionPanel.SetActive(true);
+        if (questionPanel) questionPanel.SetActive(true);
+        if (infoPanel) infoPanel.SetActive(false);
 
-        // 3. Actualizar el texto de la pregunta (opcional, por si quieres cambiarla)
-        if (questionText != null)
-            questionText.text = currentQuestion;
+        if (questionText && currentMaskData != null)
+            questionText.text = currentMaskData.questionText;
     }
 
-    // Método para el botón "SÍ"
     public void OnAnswerYes()
     {
-        Debug.Log("Respuesta: SÍ");
-        // Por ahora solo un log. Después puedes sumar puntos, desbloquear, etc.
-        // Aquí puedes decidir si cierras el panel o haces algo más
-        CloseQuestionPanel();
+        if (!waitingForAnswer || showingInfo) return;
+        EvaluateAnswer(true);
     }
 
-    // Método para el botón "NO"
     public void OnAnswerNo()
     {
-        Debug.Log("Respuesta: NO");
-        // Por ahora solo un log.
-        CloseQuestionPanel();
+        if (!waitingForAnswer || showingInfo) return;
+        EvaluateAnswer(false);
     }
 
-    // Opcional: cerrar el panel de preguntas y quizás volver a mostrar info?
-    private void CloseQuestionPanel()
+    private void EvaluateAnswer(bool userSaidYes)
     {
-        if (questionPanel != null)
-            questionPanel.SetActive(false);
+        waitingForAnswer = false;
+        showingInfo = true;
 
-        // Decide si quieres que el infoPanel vuelva a aparecer o no
-        // if (infoPanel != null)
-        //     infoPanel.SetActive(true);
+        bool isCorrect = (userSaidYes == currentMaskData.correctAnswerIsYes);
+        string feedback = isCorrect ? currentMaskData.correctFeedback : currentMaskData.wrongFeedback;
+
+        if (infoPanel)
+        {
+            infoPanel.SetActive(true);
+            if (infoText)
+                infoText.text = feedback + "\n\n" + currentMaskData.culturalInfo;
+        }
+        if (questionPanel) questionPanel.SetActive(false);
+    }
+
+    public bool IsWaitingForAnswer()
+    {
+        return waitingForAnswer && !showingInfo;
     }
 }
