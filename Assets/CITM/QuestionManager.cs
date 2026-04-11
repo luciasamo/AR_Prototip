@@ -17,7 +17,7 @@ public class QuestionManager : MonoBehaviour
     public Button noButton;
 
     private MaskSwitcher.MaskData currentMaskData;
-    private bool waitingForAnswer = true;
+    private bool waitingForAnswer = false;
     private bool showingInfo = false;
 
     void Awake()
@@ -26,6 +26,8 @@ public class QuestionManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+        Debug.Log("QuestionManager inicializado");
     }
 
     void Start()
@@ -48,17 +50,31 @@ public class QuestionManager : MonoBehaviour
 
         if (questionText && currentMaskData != null)
             questionText.text = currentMaskData.questionText;
+
+        Debug.Log($"SetCurrentMask: waitingForAnswer={waitingForAnswer}, showingInfo={showingInfo}");
     }
 
     public void OnAnswerYes()
     {
-        if (!waitingForAnswer || showingInfo) return;
+        Debug.Log($"OnAnswerYes cridat! waitingForAnswer={waitingForAnswer}, showingInfo={showingInfo}");
+
+        if (!waitingForAnswer || showingInfo)
+        {
+            Debug.Log("Resposta bloquejada");
+            return;
+        }
         EvaluateAnswer(true);
     }
 
     public void OnAnswerNo()
     {
-        if (!waitingForAnswer || showingInfo) return;
+        Debug.Log($"OnAnswerNo cridat! waitingForAnswer={waitingForAnswer}, showingInfo={showingInfo}");
+
+        if (!waitingForAnswer || showingInfo)
+        {
+            Debug.Log("Resposta bloquejada");
+            return;
+        }
         EvaluateAnswer(false);
     }
 
@@ -69,6 +85,8 @@ public class QuestionManager : MonoBehaviour
 
         bool isCorrect = (userSaidYes == currentMaskData.correctAnswerIsYes);
         string feedback = isCorrect ? currentMaskData.correctFeedback : currentMaskData.wrongFeedback;
+
+        Debug.Log($"Resposta: {(userSaidYes ? "SI" : "NO")} | Correcte: {isCorrect}");
 
         if (infoPanel)
         {
@@ -82,5 +100,14 @@ public class QuestionManager : MonoBehaviour
     public bool IsWaitingForAnswer()
     {
         return waitingForAnswer && !showingInfo;
+    }
+
+    public void ResetForNewMask()
+    {
+        waitingForAnswer = true;
+        showingInfo = false;
+        if (questionPanel) questionPanel.SetActive(true);
+        if (infoPanel) infoPanel.SetActive(false);
+        Debug.Log("QuestionManager reset per nova màscara");
     }
 }
