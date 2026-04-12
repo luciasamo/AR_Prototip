@@ -1,113 +1,65 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class QuestionManager : MonoBehaviour
 {
-    public static QuestionManager instance;
+    public Question[] questions;
 
-    [Header("Paneles UI")]
-    public GameObject questionPanel;
-    public GameObject infoPanel;
     public TextMeshProUGUI questionText;
-    public TextMeshProUGUI infoText;
+    public TextMeshProUGUI resultText;
+    public GameObject resultPanel;
 
-    [Header("Botones táctiles")]
-    public Button yesButton;
-    public Button noButton;
+    public MasksController masksController;
 
-    private MaskSwitcher.MaskData currentMaskData;
-    private bool waitingForAnswer = false;
-    private bool showingInfo = false;
-
-    void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
-
-        Debug.Log("QuestionManager inicializado");
-    }
+    private int currentQuestion = 0;
 
     void Start()
     {
-        if (yesButton) yesButton.onClick.AddListener(OnAnswerYes);
-        if (noButton) noButton.onClick.AddListener(OnAnswerNo);
-
-        if (questionPanel) questionPanel.SetActive(false);
-        if (infoPanel) infoPanel.SetActive(false);
+        LoadQuestion();
     }
 
-    public void SetCurrentMask(MaskSwitcher.MaskData maskData)
+    void LoadQuestion()
     {
-        currentMaskData = maskData;
-        waitingForAnswer = true;
-        showingInfo = false;
+        Question q = questions[currentQuestion];
 
-        if (questionPanel) questionPanel.SetActive(true);
-        if (infoPanel) infoPanel.SetActive(false);
+        questionText.text = q.questionText;
+        resultPanel.SetActive(false);
 
-        if (questionText && currentMaskData != null)
-            questionText.text = currentMaskData.questionText;
-
-        Debug.Log($"SetCurrentMask: waitingForAnswer={waitingForAnswer}, showingInfo={showingInfo}");
+        masksController.ShowMask(q.maskIndex);
     }
 
-    public void OnAnswerYes()
+    public void Answer(bool userAnswer)
     {
-        Debug.Log($"OnAnswerYes cridat! waitingForAnswer={waitingForAnswer}, showingInfo={showingInfo}");
+        Question q = questions[currentQuestion];
+        resultPanel.SetActive(true);
 
-        if (!waitingForAnswer || showingInfo)
+        if (userAnswer == q.correctAnswer)
         {
-            Debug.Log("Resposta bloquejada");
-            return;
+            resultText.text = "Correcto\n\n" + q.explanation;
         }
-        EvaluateAnswer(true);
-    }
-
-    public void OnAnswerNo()
-    {
-        Debug.Log($"OnAnswerNo cridat! waitingForAnswer={waitingForAnswer}, showingInfo={showingInfo}");
-
-        if (!waitingForAnswer || showingInfo)
+        else
         {
-            Debug.Log("Resposta bloquejada");
-            return;
+            resultText.text = "Incorrecto\n\n" + q.explanation;
         }
-        EvaluateAnswer(false);
     }
 
-    private void EvaluateAnswer(bool userSaidYes)
+    public void Next()
     {
-        waitingForAnswer = false;
-        showingInfo = true;
+        currentQuestion++;
 
-        bool isCorrect = (userSaidYes == currentMaskData.correctAnswerIsYes);
-        string feedback = isCorrect ? currentMaskData.correctFeedback : currentMaskData.wrongFeedback;
+        if (currentQuestion >= questions.Length)
+            currentQuestion = 0;
 
-        Debug.Log($"Resposta: {(userSaidYes ? "SI" : "NO")} | Correcte: {isCorrect}");
-
-        if (infoPanel)
-        {
-            infoPanel.SetActive(true);
-            if (infoText)
-                infoText.text = feedback + "\n\n" + currentMaskData.culturalInfo;
-        }
-        if (questionPanel) questionPanel.SetActive(false);
+        LoadQuestion();
     }
 
-    public bool IsWaitingForAnswer()
+    public void Previous()
     {
-        return waitingForAnswer && !showingInfo;
-    }
+        currentQuestion--;
 
-    public void ResetForNewMask()
-    {
-        waitingForAnswer = true;
-        showingInfo = false;
-        if (questionPanel) questionPanel.SetActive(true);
-        if (infoPanel) infoPanel.SetActive(false);
-        Debug.Log("QuestionManager reset per nova màscara");
+        if (currentQuestion < 0)
+            currentQuestion = questions.Length - 1;
+
+        LoadQuestion();
     }
 }
